@@ -15,7 +15,7 @@ from kornia.geometry.transform import remap
 from kornia.utils.grid import create_meshgrid
 import cv2
 
-def save_video_frames(video_path, img_size=(512,512)):  # help='for non-square videos, we recommand using 672 x 384 or 384 x 672, aspect ratio 1.75'::(512,512)(672,384)(384,672)
+def save_video_frames(video_path, img_size=(672,384)):  # help='for non-square videos, we recommand using 672 x 384 or 384 x 672, aspect ratio 1.75'::(512,512)(672,384)(384,672)
     video, _, _ = read_video(video_path, output_format="TCHW")
     # rotate video -90 degree if video is .mov format. this is a weird bug in torchvision
     if video_path.endswith('.mov'):
@@ -28,7 +28,7 @@ def save_video_frames(video_path, img_size=(512,512)):  # help='for non-square v
         image_resized = image.resize((img_size),  resample=Image.Resampling.LANCZOS)
         image_resized.save(f'data/{video_name}/{ind}.png')
         
-def video_to_frames(video_path, img_size=(512,512)):  # help='for non-square videos, we recommand using 672 x 384 or 384 x 672, aspect ratio 1.75':(512,512)(672,384)(384,672)
+def video_to_frames(video_path, img_size=(672,384)):  # help='for non-square videos, we recommand using 672 x 384 or 384 x 672, aspect ratio 1.75':(512,512)(672,384)(384,672)
     video, _, _ = read_video(video_path, output_format="TCHW")
     # rotate video -90 degree if video is .mov format. this is a weird bug in torchvision
     if video_path.endswith('.mov'):
